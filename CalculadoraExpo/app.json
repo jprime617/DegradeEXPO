@@ -1,5 +1,9 @@
 {
   "expo": {
+    "androidNavigationBar": {
+      "visible": "immersive",
+      "backgroundColor": "transparent"
+    },
     "name": "CalculadoraExpo",
     "slug": "CalculadoraExpo",
     "version": "1.0.0",
