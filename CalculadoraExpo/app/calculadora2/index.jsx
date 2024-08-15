@@ -29,7 +29,7 @@ const App = () => {
 
     const addB = function (num) {
         console.log(num)
-        onChangeText(number += num)
+        onChangeText(number + num)
         // return Alert.alert(num)
     }
 
