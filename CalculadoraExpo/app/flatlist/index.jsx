@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, Button, TextInput, Image, StatusBar, Animated, 
 
 
 const Info = [
-    {id: 0, nome: 'davy jones', trabalho: 'coisas de pro player', completo: true,},
-    {id: 1, nome: 'leon da central', trabalho: 'pegar no meu pau', completo: false},
-    {id: 2, nome: 'vitor gemaplys', trabalho: 'fenda da sunga filha puta', completo: false},
-    {id: 3, nome: 'xbox milgrau', trabalho: 'racismo', completo: false,},
+    {id: 0, nome: 'davy jones', trabalho: 'Jogar Dark Souls', completo: true,},
+    {id: 1, nome: 'leon', trabalho: 'Fazer video do novo Flip 4', completo: false},
+    {id: 2, nome: 'vitor gemaplys', trabalho: 'Fazer musica nova', completo: false},
+    {id: 3, nome: 'xbox', trabalho: 'Fazer Jogo Bom de Verdade', completo: false,},
 ];
 
 
@@ -27,7 +27,7 @@ const App = () => {
         <FlatList
         data={tarefa}
         renderItem={({item}) => <View>
-            <Text style={item.completo ? styles.complet : styles.incomplet}>O {item.nome} trabalha com {item.trabalho}</Text>
+            <Text style={item.completo ? styles.complet : styles.incomplet}>{item.nome} Tarefa é: {item.trabalho}</Text>
             <Button title="feito" onPress={() => fazer(item.id)}></Button>
         
         </View>}
