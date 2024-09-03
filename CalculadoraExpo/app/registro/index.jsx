@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {View, Text, TextInput, Pressable, StyleSheet, SafeAreaView} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const style = StyleSheet.create({
     container:{
@@ -12,12 +13,13 @@ const style = StyleSheet.create({
         padding: 0        
     },
     botao:{
-        backgroundColor: 'gray',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
         alignItems: 'center',
         marginTop: 20,
+        padding: 10,
+        
     },
     title: {
         fontSize: 30,
@@ -54,11 +56,13 @@ export default SignUp = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [nome, setNome] = useState('')
+    const [pressed, setPressed] = useState('')
 
 
     const registrarUsuario = async function () {
         if (!nome || !email || !senha){
             console.log("os parametros não foram todos preenchidos")
+            alert("os parametros não foram todos preenchidos")
             return
         }
         const resposta = await fetch('https://taskhub-s37f.onrender.com/auth/signup', {
@@ -71,15 +75,19 @@ export default SignUp = () => {
         })
         if(!resposta){
             console.log('erro')
+            alert('erro')
         }else if(resposta.status == 200){
             console.log('user criado com sucesso')
+            alert('user criado com sucesso')
         }else {
             console.log('occorreu um erro')
+            alert('ocorreu um erro')
         }
     }
 
     return(
         <SafeAreaView style={style.container}>
+            
             <View style={style.caixa1}>
                 <View>
                     <Text style={style.title}>Sign Up</Text>
@@ -105,8 +113,15 @@ export default SignUp = () => {
                     />
                     <View>
                         <Pressable 
-                            style={style.botao}
                             onPress={registrarUsuario}
+                            onPressIn={() => setPressed(true)}
+                            onPressOut={() => setPressed(false)}
+                            style={({ pressed }) => [
+                            {
+                                backgroundColor: pressed ? 'white' : 'gray',
+                            },
+                            style.botao,
+      ]}
                         ><Text style={style.textoB}>Cadastrar</Text></Pressable>
                     </View>
                 </View>
