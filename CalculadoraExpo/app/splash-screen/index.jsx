@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput, Image, StatusBar, Animated, Easing } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Voltar from "../../components/voltar";
 
 const App = () => {
 
@@ -22,6 +23,8 @@ const App = () => {
           uri: 'https://upload.wikimedia.org/wikipedia/pt/0/0c/The_Lord_of_the_Rings_logo.png',
         }}  />
         </LinearGradient>
+
+        <Voltar/>
     </View>
     
     

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import Voltar from "../../components/voltar";
 
 const App = () => {
     const [number, onChangeText] = React.useState('')
@@ -62,6 +63,8 @@ const App = () => {
             </View>
 
             <Text>o valor é {resultado}</Text>
+
+            <Voltar/>
         </View>
     );
 };

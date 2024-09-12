@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {View, Text, TextInput, Pressable, StyleSheet, SafeAreaView} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Voltar from "../../components/voltar";
 
 const style = StyleSheet.create({
     container:{
@@ -121,8 +122,10 @@ export default SignUp = () => {
                                 backgroundColor: pressed ? 'white' : 'gray',
                             },
                             style.botao,
-      ]}
+                            ]}
                         ><Text style={style.textoB}>Cadastrar</Text></Pressable>
+
+                        <Voltar/>
                     </View>
                 </View>
             </View>

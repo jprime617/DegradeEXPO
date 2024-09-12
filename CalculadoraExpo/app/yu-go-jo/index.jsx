@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker'
+import Voltar from "../../components/voltar";
 
 const style = StyleSheet.create({
     container: {
@@ -38,6 +39,8 @@ export default Seletor = () => {
                     <Picker.Item key={index} label={item.nome} value={item.value}/> 
                 ))}
             </Picker> {/*faz uma lista que passa por todo conteudo do 'lista_pokemon' o 'item' é a informação de dentro da lista e o 'index' a posição dentro do array*/}
+
+            <Voltar/>
 
         </View>
     )

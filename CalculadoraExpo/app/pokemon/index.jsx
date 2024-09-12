@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { Picker } from '@react-native-picker/picker'
+import Voltar from "../../components/voltar";
 
 const style = StyleSheet.create({
     container: {
@@ -82,10 +83,7 @@ export default Seletor = () => {
                     <Picker.Item key={index} label={item.name} value={item.name}/>
                 ))}
             </Picker> 
-            <Button
-                title='Confirma'
-                onPress={() => {console.log(pokemon,type)}}
-                />
+            
 
             <Image
                 style={style.imagem}
@@ -93,6 +91,8 @@ export default Seletor = () => {
                     uri: sprite.front_default
                 }}
             />
+
+            <Voltar/>
             
 
         </View>

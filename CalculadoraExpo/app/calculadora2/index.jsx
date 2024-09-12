@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput, Image, StatusBar, Animated, Easing, Pressable, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Botao from "../../components/botao";
+import Voltar from "../../components/voltar";
 
 const App = () => {
     const [number, onChangeText] = React.useState('')
@@ -77,7 +78,7 @@ const App = () => {
                 onPress={() => addB(9)}
             />
             
-
+        <Voltar/>
 
         </View>
     );

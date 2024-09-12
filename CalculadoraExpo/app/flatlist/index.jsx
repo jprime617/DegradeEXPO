@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput, Image, StatusBar, Animated, Easing, Pressable, Alert, FlatList } from 'react-native';
-
+import Voltar from "../../components/voltar";
 
 const Info = [
     {id: 0, nome: 'davy jones', trabalho: 'Jogar Dark Souls', completo: true,},
@@ -35,6 +35,7 @@ const App = () => {
         >
 
         </FlatList>
+        <Voltar/>
     </View>
 } 
 
