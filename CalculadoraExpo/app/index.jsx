@@ -32,6 +32,7 @@ export default app = () => {
         {id: 4, titulo: 'Registro', link: '/registro'},
         {id: 5, titulo: 'Splash-Screen', link: '/splash-screen'},
         {id: 6, titulo: 'Yu-Go-Jo', link: '/yu-go-jo'},
+        {id: 7, titulo: 'Sobre-Mim', link: '/myapp'},
         
     ]
 

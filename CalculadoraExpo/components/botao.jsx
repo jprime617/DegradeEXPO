@@ -1,22 +1,25 @@
-import React from 'react';
-import { Text, Pressable, StyleSheet } from 'react-native';
-import App from '../app/calculadora2';
+import React, { useState } from 'react';
+import { Text, Pressable, StyleSheet, View } from 'react-native';
 
-const Botao = ({ titulo, onPress }) => {
-    
+const Botao = ({ titulo, onPress, estilo }) => {
+  const [pressed, setPressed] = useState(false);
+
   return (
-    <Pressable 
-        onPress={onPress} 
-        style={[styles.button]}
+    <View style={estilo}>
+    <Pressable
+      onPress={onPress}
+      onPressIn={() => setPressed(true)} // Define pressed como true quando o botão é pressionado
+      onPressOut={() => setPressed(false)} // Define pressed como false quando o botão é solto
+      style={[styles.button, { backgroundColor: pressed ? '#9bade0' : '#383FDB' }]} // Altera a cor baseado no estado
     >
-      <Text style={[styles.text]}>{titulo}</Text>
+      <Text style={styles.text}>{titulo}</Text>
     </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#BDCDF7',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
