@@ -1,34 +1,40 @@
-import { View, Text, StyleSheet, Button, TextInput, Pressable } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
 
 const style = StyleSheet.create({
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        position: 'absolute',
+        right: 30,
+        top: 750
     },
     botao: {
         paddingVertical: 10,
         paddingHorizontal: 20,
-        borderRadius: 5,
+        borderRadius: 50,
         alignItems: 'center',
         marginTop: 20,
-        padding: 10,
-        backgroundColor: 'red'
-        
+        backgroundColor: 'red',
+        width: 50,
+        height: 50
+    },
+    botaoText: {
+        color: '#FFF',
+        fontSize: 16,
+        fontWeight: 'bold',
     }
 })
 
-const Voltar = () => {
-    return(
+const Voltar = ({ link,}) => {
+
+    const texto = '<'
+    return (
         <View style={style.container}>
-            <Link href={'/'}>
-                <Pressable style={style.botao}>
-                    <Text>Voltar</Text>
-                </Pressable>
+            <Link href={link} style={style.botao}>
+                <Text style={style.botaoText}>{texto}</Text>
             </Link>
         </View>
     )
 }
 
-export default Voltar
+export default Voltar;

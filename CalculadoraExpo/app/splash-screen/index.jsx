@@ -24,7 +24,9 @@ const App = () => {
         }}  />
         </LinearGradient>
 
-        <Voltar/>
+        <Voltar
+            link={'/'}
+        />
     </View>
     
     

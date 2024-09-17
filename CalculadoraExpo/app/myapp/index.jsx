@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, Image, FlatList, Pressable, Header } from 'react-native';
-import { Link } from 'expo-router';
 import Cabeca from '../../components/cabeca';
-import Botao from '../../components/botao';
+import BotaoLink from '../../components/botaoLink';
+import Voltar from '../../components/voltar';
 
 
 const style = StyleSheet.create({
     container: {
         display: "flex",
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     image:{
         borderRadius: 50,
@@ -20,6 +20,16 @@ const style = StyleSheet.create({
     },
     botao: {
         marginTop: 30,
+    },
+    caixa: {
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 5,
+        borderRadius: 20,
+        width: 300,
+        height: 400,
+        backgroundColor: 'gray'
     }
 })
 
@@ -29,16 +39,36 @@ export default Myapp = () => {
             <Cabeca
                 titulo={'Sobre Mim'}
             />
-            <Image 
-                style={style.image}
-                source={require('../../assets/images/justice.gif')}
-            />
-            <Text>Essa é a Minha Pagina Muito Foda</Text>
-            <Botao style={style.botao}
-                estilo={style.botao}
-                titulo={'Veja Meus Filmes Favoritos'}
-                onPress={() => {console.log('nossa')}}
-            />
+            <View style={style.caixa}>
+                <Image 
+                    style={style.image}
+                    source={require('../../assets/images/justice.gif')}
+                />
+                <Text>Essa é a Minha Pagina Muito Foda</Text>
+            
+
+            
+                <BotaoLink style={style.botao}
+                    estilo={style.botao}
+                    titulo={'Veja Meus Filmes Favoritos'}
+                    onPress={() => {console.log('Filmes/tela01')}}
+                    caminho={'/myapp/tela1'}
+                />
+
+                <BotaoLink style={style.botao}
+                    estilo={style.botao}
+                    titulo={'Veja Meus Livros Favoritos'}
+                    onPress={() => {console.log('Livros/tela02')}}
+                    caminho={'/myapp/tela2'}
+                />
+
+            
+            </View>
+            
+            <Voltar
+                link={'/'}
+                />
+            
         </View>
     )
 }

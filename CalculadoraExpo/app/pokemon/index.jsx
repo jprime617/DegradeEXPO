@@ -92,7 +92,9 @@ export default Seletor = () => {
                 }}
             />
 
-            <Voltar/>
+            <Voltar
+                link={'/'}
+            />
             
 
         </View>

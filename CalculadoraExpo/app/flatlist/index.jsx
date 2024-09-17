@@ -35,7 +35,9 @@ const App = () => {
         >
 
         </FlatList>
-        <Voltar/>
+        <Voltar
+            link={'/'}
+        />
     </View>
 } 
 

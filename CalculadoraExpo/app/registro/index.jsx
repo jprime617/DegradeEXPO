@@ -125,10 +125,16 @@ export default SignUp = () => {
                             ]}
                         ><Text style={style.textoB}>Cadastrar</Text></Pressable>
 
-                        <Voltar/>
+                        <Voltar
+                            link={'/'}
+                        />
                     </View>
                 </View>
+                
             </View>
+            <Voltar
+                    link={'/'}
+                />
         </SafeAreaView>
     )
 }

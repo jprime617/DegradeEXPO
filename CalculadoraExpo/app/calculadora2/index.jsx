@@ -78,7 +78,9 @@ const App = () => {
                 onPress={() => addB(9)}
             />
             
-        <Voltar/>
+            <Voltar
+            link={'/'}
+            />
 
         </View>
     );

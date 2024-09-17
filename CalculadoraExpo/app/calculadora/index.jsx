@@ -64,7 +64,9 @@ const App = () => {
 
             <Text>o valor é {resultado}</Text>
 
-            <Voltar/>
+            <Voltar
+            link={'/'}
+            />
         </View>
     );
 };

@@ -40,7 +40,9 @@ export default Seletor = () => {
                 ))}
             </Picker> {/*faz uma lista que passa por todo conteudo do 'lista_pokemon' o 'item' é a informação de dentro da lista e o 'index' a posição dentro do array*/}
 
-            <Voltar/>
+            <Voltar
+            link={'/'}
+            />
 
         </View>
     )

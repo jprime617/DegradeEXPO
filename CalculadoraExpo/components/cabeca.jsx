@@ -6,7 +6,8 @@ const style = StyleSheet.create({
         width: '100%',
         backgroundColor: 'gray',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 30
     },
     texto: {
         marginLeft: 30
