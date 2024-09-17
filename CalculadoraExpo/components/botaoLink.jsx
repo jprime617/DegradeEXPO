@@ -7,9 +7,9 @@ const BotaoLink = ({ titulo, onPress, estilo, caminho }) => {
   const router = useRouter();
 
   const handlePress = () => {
-    setPressed(false); // Reset the pressed state
+    setPressed(false);
     if (onPress) onPress();
-    router.push(caminho); // Navigate to the specified path
+    router.push(caminho);
   };
 
   return (
@@ -18,7 +18,7 @@ const BotaoLink = ({ titulo, onPress, estilo, caminho }) => {
         onPressIn={() => setPressed(true)}
         onPressOut={() => setPressed(false)}
         onPress={handlePress}
-        style={[styles.button, { backgroundColor: pressed ? '#9bade0' : '#383FDB' }]}
+        style={[styles.button, { backgroundColor: pressed ? '#733434' : '#F23535' }]}
       >
         <Text style={styles.text}>{titulo}</Text>
       </Pressable>
