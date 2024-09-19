@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import Cabeca from '../../components/cabeca';
 import BotaoLink from '../../components/botaoLink';
-import Voltar from '../../components/voltar';
 
 
 const style = StyleSheet.create({
@@ -16,8 +15,8 @@ const style = StyleSheet.create({
     },
     image:{
         borderRadius: 50,
-        width: 100,
-        height: 100,
+        width: 130,
+        height: 130,
         marginVertical: 30,
         resizeMode: 'cover'
 
@@ -37,6 +36,9 @@ const style = StyleSheet.create({
     },
     borda: {
         borderRadius: 50
+    },
+    texto: {
+        fontWeight: 'bold'
     }
 })
 
@@ -81,7 +83,7 @@ export default Myapp = () => {
                         resizeMode='contain'
                     />
                 </View>
-                <Text>Essa é a Minha Pagina</Text>
+                <Text style={style.texto}>Essa é a Minha Pagina</Text>
             
 
             

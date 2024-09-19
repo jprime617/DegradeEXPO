@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Button, TextInput, Pressable, Image } from 'react-native';
+import { Link } from 'expo-router';
 
 const style = StyleSheet.create({
     container: {
@@ -12,7 +13,8 @@ const style = StyleSheet.create({
         backgroundColor: '#F2E4E4'
     },
     texto: {
-        
+        fontWeight: 'bold'
+
     },
     espaco: {
         marginBottom: 30,
@@ -22,17 +24,27 @@ const style = StyleSheet.create({
     }
 })
 
-const Foto = ({estilo, link, texto, ano}) => {
-    return(
+const Foto = ({ estilo, link, texto, ano, data }) => {
+
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+ data)
+    
+    return (
         <View style={style.container}>
             <View style={style.espaco}>
-                <Image
-                    style={estilo}
-                    resizeMode='contain'
-                    source={{
-                        uri: link
-                    }}
-                />
+                <Link href={{
+                    pathname: `myapp/detalhe/${data.id}`,
+                    params: { 'data': JSON.stringify(data) }
+                }} asChild>
+                    <Pressable>
+                        <Image
+                            style={estilo}
+                            resizeMode='contain'
+                            source={{
+                                uri: link
+                            }}
+                        />
+                    </Pressable>
+                </Link>
                 <Text style={style.texto}>
                     {texto}
                 </Text>

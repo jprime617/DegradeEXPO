@@ -14,7 +14,8 @@ const style = StyleSheet.create({
     },
     texto: {
         marginLeft: 30,
-        color: '#F2E4E4'
+        color: '#F2E4E4',
+        fontWeight: 'bold'
     }
 })
 

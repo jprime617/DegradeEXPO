@@ -47,7 +47,7 @@ export default Tela02 = () => {
 
                 <FlatList
                     data={DataL}
-                    renderItem={({ item }) => <Foto estilo={style.foto} link={item.link} texto={item.titulo} ano={item.ano} />}
+                    renderItem={({ item }) => <Foto estilo={style.foto} link={item.link} texto={item.titulo} ano={item.ano} data={item} />}
                     keyExtractor={item => item.id}
                 />
 
