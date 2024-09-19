@@ -26,7 +26,6 @@ const style = StyleSheet.create({
 
 const Foto = ({ estilo, link, texto, ano, data }) => {
 
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+ data)
     
     return (
         <View style={style.container}>

@@ -44,7 +44,6 @@ export default DetalheScreen = () => {
 
     const { data } = useLocalSearchParams();
     const nossa = JSON.parse(data)
-    console.log(nossa)
     return (
         <View style={style.container}>
             <StatusBar hidden={true} />
