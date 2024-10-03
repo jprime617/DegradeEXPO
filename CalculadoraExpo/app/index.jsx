@@ -33,7 +33,8 @@ export default app = () => {
         {id: 5, titulo: 'Splash-Screen', link: '/splash-screen'},
         {id: 6, titulo: 'Yu-Go-Jo', link: '/yu-go-jo'},
         {id: 7, titulo: 'Sobre-Mim', link: '/myapp'},
-        {id: 8, titulo: 'IFome', link: '/ifome'}
+        {id: 8, titulo: 'IFome', link: '/ifome'},
+        {id: 9, titulo: 'Camera', link: '/camera'}
         
     ]
 
