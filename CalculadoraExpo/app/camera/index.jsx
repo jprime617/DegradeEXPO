@@ -2,12 +2,14 @@ import { useState, useRef } from "react";
 import { View, StyleSheet, Text, Image, Button, SafeAreaView } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
+import * as Linking from 'expo-linking';
 
 export default function Camero() {
     const [permissao, pedirPermissao] = useCameraPermissions();
     const [facing, setFacing] = useState('back');
     const [foto, setFoto] = useState(null);
     const cameraRef = useRef(null);
+    const [linkEscaneado, setLinkescaneado] = useState(false)
 
     function trocaCamera() {
         setFacing(ladoCamera => (ladoCamera === 'back' ? 'front' : 'back'));
@@ -40,6 +42,15 @@ export default function Camero() {
         setFoto(null)
     }
 
+    const LinkFoiEscaneado = (codeL) => {
+        if (!linkEscaneado) {
+            Linking.openURL(codeL.data)
+            setLinkescaneado(true)
+            setTimeout(() => setLinkescaneado(false),5000)
+            
+        }
+    }
+
     return (
         <SafeAreaView style={style.container}>
             {foto ? (
@@ -49,7 +60,9 @@ export default function Camero() {
                     <Button title="Descartar" onPress={() => setFoto(null)} />
                 </View>
             ) : (
-                <CameraView facing={facing} style={style.camera} ref={cameraRef}>
+                <CameraView barcodeScannerSettings={{
+                    barcodeTypes: ['qr']
+                }} onBarcodeScanned={(code) => LinkFoiEscaneado(code)} facing={facing} style={style.camera} ref={cameraRef}>
                     <SafeAreaView>
                         <Button title="Tirar Foto" onPress={tirarFoto} />
                         <Button title="Trocar Câmera" onPress={trocaCamera} />
@@ -62,25 +75,36 @@ export default function Camero() {
 
 const style = StyleSheet.create({
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        height: '100%',
-    },
-    botao: {
         flex: 1,
-        alignSelf: 'center',
-        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f0f0f0', // Cor de fundo suave
     },
     textopermissao: {
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 20,
+        fontSize: 18,
+        color: '#333',
     },
     camera: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'flex-end'
+        flex: 1,
+        justifyContent: 'flex-end',
     },
     image: {
-        height: '100%',
-        width: '100%'
+        height: '70%', // Ajuste a altura da imagem
+        width: '100%',
+        borderRadius: 10, // Bordas arredondadas
+        marginBottom: 10, // Espaço abaixo da imagem
+    },
+    controls: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 20,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fundo semitransparente
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 10,
+        marginBottom: 20,
     },
 });
