@@ -1,93 +1,86 @@
-import { View, Text, Pressable, StyleSheet, TextInput, Button } from 'react-native'
+import { View, Text, Pressable, StyleSheet, TextInput, Button, FlatList } from 'react-native';
+import { Link } from 'expo-router';
+import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useState, useEffect } from 'react';
+import Foto4 from '../../components/fotos4';
 
-const storeData = async (value) => {
-    try {
-        const jsonValue = JSON.stringify(value);
-        await AsyncStorage.setItem('my-key', jsonValue);
-        console.log('Data saved');
-    } catch (e) {
-        console.log(e);
-    }
-};
 
-const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('my-key');
-      return jsonValue != null ? console.log(JSON.parse(jsonValue)) : null;
-    } catch (e) {
-      console.log(e);
-    }
-};
+const Item = ({ title }) => (
+    <View style={styles.item}>
+        <Text style={styles.title}>{title}</Text>
+    </View>
+);
+
 
 export default function Memoria() {
-    const [formData, setFormData] = useState({
-        titulo: '',
-        ano: '',
-        onde: '',
-        desc: ''
-    });
 
-    // Função para atualizar o estado com base no campo que foi alterado
-    const handleInputChange = (name, value) => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value
-        }));
-    };
+    const [dataInfo, setDataInfo] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const jsonValue = await AsyncStorage.getItem('memoria');
+                const jsonValueC = jsonValue ? JSON.parse(jsonValue) : null;
+                setDataInfo(jsonValueC)
+            } catch (error) {
+                console.log(error)
+            }
+        };
+        getData();
+    }, [])
+
+
 
     return (
         <View style={styles.container}>
-            <TextInput
-                placeholder='Título'
-                value={formData.titulo}
-                onChangeText={(value) => handleInputChange('titulo', value)}
-                style={styles.input}
+
+            <FlatList
+                data={dataInfo}
+                renderItem={({ item }) => <Foto4 estilo={styles.imagem} link={item.foto} texto={item.titulo} ano={item.ano} onde={item.onde} desc={item.desc} />}
+                keyExtractor={item => item.id}
             />
-            <TextInput
-                placeholder='Ano'
-                value={formData.ano}
-                onChangeText={(value) => handleInputChange('ano', value)}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder='Onde'
-                value={formData.onde}
-                onChangeText={(value) => handleInputChange('onde', value)}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder='Descrição'
-                value={formData.desc}
-                onChangeText={(value) => handleInputChange('desc', value)}
-                style={styles.input}
-            />
-            <Button
-                title='Salvar'
-                onPress={() => storeData(formData)}
-            />
-            <Button
-                title='Receba'
-                onPress={() => getData()}
-            />
+            <Link href={'/memoria/salvar'} asChild>
+                <Pressable>
+                    <Text style={styles.botao}>
+                        Criar memoria
+                    </Text>
+                </Pressable>
+            </Link>
+            {/* <Pressable onPress={() => console.log(dataInfo)}>
+                <Text>
+                    Data
+                </Text>
+            </Pressable> */}
+
+
+
+
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20
+        alignItems: 'center'
     },
-    input: {
-        backgroundColor: 'gray',
+    imagem: {
+        width: 300,
+        height: 200,
+        marginVertical: 30
+    },
+    item: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
+    botao: {
+        backgroundColor: 'blue',
         height: 50,
-        width: '100%',
-        marginVertical: 10,
-        padding: 10,
-        borderRadius: 5,
+        width: 100
     }
-});
+
+})
